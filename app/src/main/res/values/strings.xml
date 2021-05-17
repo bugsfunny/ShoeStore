@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">ShoeStore</string>
+    <string name="email_label">Email:</string>
+    <string name="password_label">Password:</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="enter_your_password">Enter Your password</string>
+    <string name="lock_open">lock open</string>
+    <string name="signup">Signup</string>
+    <string name="login">Login</string>
+    <string name="welcome">Hi there, welcome!</string>
+    <string name="fire">fire</string>
+    <string name="baseline">to the best Shoes App Ever</string>
+    <string name="go">Go Ahead</string>
+    <string name="instruction">Make a list of shoes</string>
+    <string name="instruction_detail">with its characteristics and save them</string>
+    <string name="start">Let\'s start</string>
+    <string name="add_shoe">add shoe</string>
+    <string name="shoe_name_label">Shoe Name:</string>
+    <string name="name_shoe_question">What is the name of the shoe?</string>
+    <string name="shoe_size_label">Shoe size:</string>
+    <string name="minus">-</string>
+    <string name="plus">+</string>
+    <string name="shoe_company_label">Company:</string>
+    <string name="trademark">Trademark</string>
+    <string name="shoe_description_label">Description</string>
+    <string name="please_be_specific">Please be specific...</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="logout">Logout</string>
 </resources>

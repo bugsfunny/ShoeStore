@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ShoeDetailFragment">
+
+    <data>
+        <variable
+            name="shoeViewModel"
+            type="com.udacity.shoestore.ShoeDetailViewModel" />
+        <variable
+            name="shoe"
+            type="com.udacity.shoestore.models.Shoe" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/shoe_name_label"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            style="@style/BoldText"/>
+        <EditText
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:hint="@string/name_shoe_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={shoeViewModel.shoe.name}"
+            style="@style/FormInput"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="4"
+                android:layout_height="wrap_content"
+                android:text="@string/shoe_size_label"
+                style="@style/BoldText"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/minus"
+                style="@style/CustomButton"
+                android:onClick="@{() -> shoeViewModel.removeSize()}"/>
+            <TextView
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:text="@{Double.toString(shoeViewModel.shoe.size)}"
+                tools:text="0.0"
+                style="@style/BoldText"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/plus"
+                style="@style/CustomButton"
+                android:onClick="@{() -> shoeViewModel.addSize()}"/>
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/shoe_company_label"
+            style="@style/LabelText"/>
+        <EditText
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:hint="@string/trademark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={shoeViewModel.shoe.company}"
+            style="@style/FormInput"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/shoe_description_label"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            style="@style/LabelText"/>
+        <EditText
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:hint="@string/please_be_specific"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={shoeViewModel.shoe.description}"
+            style="@style/FormInput"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="24dp">
+            <Button
+                android:id="@+id/buttonCancel"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/cancel"
+                android:textAllCaps="false"
+                tools:ignore="ButtonStyle"
+                style="@style/CustomButton"
+                android:layout_marginEnd="8dp"/>
+            <Button
+                android:id="@+id/buttonSave"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/save"
+                android:textAllCaps="false"
+                tools:ignore="ButtonStyle"
+                style="@style/CustomButton"
+                android:layout_marginStart="8dp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</layout>

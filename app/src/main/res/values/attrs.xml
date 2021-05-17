@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ShoeItemView">
+        <attr name="shoeTextView" format="string"/>
+        <attr name="shoeBrandTextView" format="string"/>
+        <attr name="shoeDescriptionTextview" format="string"/>
+        <attr name="shoeSizeTextView" format="string"/>
+    </declare-styleable>
+</resources>
