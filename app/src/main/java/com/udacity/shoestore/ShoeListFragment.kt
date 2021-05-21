@@ -39,10 +39,6 @@ class ShoeListFragment : Fragment() {
             actionShoeListFragmentToShoeDetailFragment
         )
         binding.fab.setOnClickListener(createNavigateOnClickListener)
-        val shoe = arguments?.let { ShoeListFragmentArgs.fromBundle(it).shoe }
-        shoe?.let {
-            viewModel.addShoe(it)
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -54,7 +50,7 @@ class ShoeListFragment : Fragment() {
         if(item.itemId == R.id.loginFragment) {
             val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return false
             sharedPref.edit().putBoolean("IS_CONNECTED", false).apply()
-            findNavController().navigate(R.id.loginFragment)
+            findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToLoginFragment())
             return true
         }
         return super.onOptionsItemSelected(item)

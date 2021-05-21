@@ -21,6 +21,9 @@
         <item name="android:textSize">18sp</item>
     </style>
     <style name="FormInput" parent="Text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:inputType">text</item>
         <item name="android:layout_marginStart">16dp</item>
         <item name="android:layout_marginEnd">16dp</item>
         <item name="android:layout_marginTop">4dp</item>
@@ -31,7 +34,6 @@
     </style>
     <style name="LabelText" parent="BoldText">
         <item name="android:layout_marginStart">16dp</item>
-        <item name="android:layout_marginEnd">16dp</item>
         <item name="android:layout_marginTop">16dp</item>
     </style>
     <style name="CustomButton">

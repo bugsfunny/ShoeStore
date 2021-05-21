@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".LoginFragment">
-
+    <!-- Linear layout is a good solution : only one nested view-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

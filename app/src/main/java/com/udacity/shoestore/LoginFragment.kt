@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.databinding.FragmentLoginBinding
@@ -26,7 +25,7 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val welcomeDirection = LoginFragmentDirections.actionLoginFragmentToWelcomeFragment()
-        val shoeListDirection = LoginFragmentDirections.actionLoginFragmentToShoeListFragment(null)
+        val shoeListDirection = LoginFragmentDirections.actionLoginFragmentToShoeListFragment()
         if (isUserConnected()) {
             findNavController().navigate(shoeListDirection)
         }

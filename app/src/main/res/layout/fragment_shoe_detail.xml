@@ -1,134 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ShoeDetailFragment">
+    <!-- ConstraintLayout is a good solution : view is too complicated for linearlayout-->
 
     <data>
+
         <variable
-            name="shoeViewModel"
-            type="com.udacity.shoestore.ShoeDetailViewModel" />
+            name="shoeListViewModel"
+            type="com.udacity.shoestore.ShoeListViewModel" />
+
         <variable
             name="shoe"
             type="com.udacity.shoestore.models.Shoe" />
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+
         <TextView
+            android:id="@+id/nameLabelTV"
+            style="@style/LabelText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/shoe_name_label"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            style="@style/BoldText"/>
-        <EditText
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:hint="@string/name_shoe_question"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@={shoeViewModel.shoe.name}"
-            style="@style/FormInput"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="4"
-                android:layout_height="wrap_content"
-                android:text="@string/shoe_size_label"
-                style="@style/BoldText"/>
-            <Button
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="@string/minus"
-                style="@style/CustomButton"
-                android:onClick="@{() -> shoeViewModel.removeSize()}"/>
-            <TextView
-                android:gravity="center"
-                android:layout_width="0dp"
-                android:layout_weight="2"
-                android:layout_height="wrap_content"
-                android:text="@{Double.toString(shoeViewModel.shoe.size)}"
-                tools:text="0.0"
-                style="@style/BoldText"/>
-            <Button
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="@string/plus"
-                style="@style/CustomButton"
-                android:onClick="@{() -> shoeViewModel.addSize()}"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        </LinearLayout>
+        <EditText
+            android:id="@+id/nameInput"
+            style="@style/FormInput"
+            android:hint="@string/name_shoe_question"
+            android:importantForAutofill="no"
+            android:text="@={shoeListViewModel.shoe.name}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nameLabelTV" />
+
         <TextView
+            android:id="@+id/sizeLabelTV"
+            style="@style/LabelText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/shoe_size_label"
+            app:layout_constraintEnd_toStartOf="@id/minusBTN"
+            app:layout_constraintHorizontal_weight="5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nameInput" />
+
+        <Button
+            android:id="@+id/minusBTN"
+            style="@style/CustomButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:onClick="@{() -> shoeListViewModel.removeSize()}"
+            android:text="@string/minus"
+            app:layout_constraintBottom_toBottomOf="@id/sizeLabelTV"
+            app:layout_constraintEnd_toStartOf="@id/sizeTV"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/sizeLabelTV"
+            app:layout_constraintTop_toTopOf="@id/sizeLabelTV" />
+
+        <TextView
+            android:id="@+id/sizeTV"
+            style="@style/BoldText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:text="@{Double.toString(shoeListViewModel.shoe.size)}"
+            app:layout_constraintBottom_toBottomOf="@id/minusBTN"
+            app:layout_constraintEnd_toStartOf="@id/plusBTN"
+            app:layout_constraintHorizontal_weight="2"
+            app:layout_constraintStart_toEndOf="@id/minusBTN"
+            app:layout_constraintTop_toTopOf="@id/minusBTN"
+            tools:text="0.0" />
+
+        <Button
+            android:id="@+id/plusBTN"
+            style="@style/CustomButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            android:onClick="@{() -> shoeListViewModel.addSize()}"
+            android:text="@string/plus"
+            app:layout_constraintBottom_toBottomOf="@id/sizeTV"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/sizeTV"
+            app:layout_constraintTop_toTopOf="@id/sizeTV" />
+
+
+        <TextView
+            android:id="@+id/companyLabelTV"
+            style="@style/LabelText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/shoe_company_label"
-            style="@style/LabelText"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sizeLabelTV" />
+
         <EditText
-            android:importantForAutofill="no"
-            android:inputType="text"
+            android:id="@+id/companyInput"
+            style="@style/FormInput"
             android:hint="@string/trademark"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@={shoeViewModel.shoe.company}"
-            style="@style/FormInput"/>
+            android:importantForAutofill="no"
+            android:text="@={shoeListViewModel.shoe.company}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/companyLabelTV" />
+
         <TextView
+            android:id="@+id/shoeDescriptionTextview"
+            style="@style/LabelText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/shoe_description_label"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
-            style="@style/LabelText"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/companyInput" />
+
         <EditText
+            android:id="@+id/descriptionInput"
+            style="@style/FormInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/please_be_specific"
             android:importantForAutofill="no"
             android:inputType="text"
-            android:hint="@string/please_be_specific"
-            android:layout_width="match_parent"
+            android:text="@={shoeListViewModel.shoe.description}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/shoeDescriptionTextview" />
+
+        <Button
+            android:id="@+id/buttonCancel"
+            style="@style/CustomButton"
+            android:layout_marginTop="16dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@={shoeViewModel.shoe.description}"
-            style="@style/FormInput"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/cancel"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toStartOf="@id/buttonSave"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/descriptionInput"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/buttonSave"
+            style="@style/CustomButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginTop="24dp">
-            <Button
-                android:id="@+id/buttonCancel"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="@string/cancel"
-                android:textAllCaps="false"
-                tools:ignore="ButtonStyle"
-                style="@style/CustomButton"
-                android:layout_marginEnd="8dp"/>
-            <Button
-                android:id="@+id/buttonSave"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="@string/save"
-                android:textAllCaps="false"
-                tools:ignore="ButtonStyle"
-                style="@style/CustomButton"
-                android:layout_marginStart="8dp"/>
+            android:text="@string/save"
+            android:textAllCaps="false"
+            app:layout_constraintBaseline_toBaselineOf="@id/buttonCancel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/buttonCancel"
+            tools:ignore="ButtonStyle" />
 
-        </LinearLayout>
-    </LinearLayout>
-
-
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
